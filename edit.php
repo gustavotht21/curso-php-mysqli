@@ -24,7 +24,7 @@ $result = $connection->query($sqlSelect)->fetch_assoc();
 </head>
 <body>
 <div class="container mt-5">
-    <h2 class="mt-3">Cadastrar usuário</h2>
+    <h2 class="mt-3">Editar usuário</h2>
     <?php
     $typeOfAlert = $_GET['c'] === '1' ? 'danger' : 'success';
     if (isset($_GET['m'])) {
