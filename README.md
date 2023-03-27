@@ -45,7 +45,7 @@ Repositório criado para salvar o sistema construído ao longo do curso de PHP 7
 
 ## 📂 Acesso ao projeto
 
-Você pode acessar o projeto através [desse link](https://phpmysqli.devborges.tech/) ou [baixando-o]() e iniciando-o na IDE de sua preferência, onde quando executado irá abrir no navegador o projeto funcionando
+Você pode acessar o projeto através [desse link](https://phpmysqli.devborges.tech/) ou [baixando-o](https://github.com/gustavotht21/curso-php-mysqli/archive/refs/heads/main.zip) e iniciando-o na IDE de sua preferência, onde quando executado irá abrir no navegador o projeto funcionando
 
 ## 👤 Autor
 
