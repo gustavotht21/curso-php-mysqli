@@ -24,72 +24,74 @@ $connection = connection();
         </div>
     <?php } else {?>
         <a href="./cadastrar.php" class="btn btn-info fw-semibold text-white">Cadastrar usuário</a>
-        <table class="table table-info table-striped mt-5 align-middle">
-            <tr>
-                <td class="fw-bold">Código:</td>
-                <td class="fw-bold">Nome:</td>
-                <td class="fw-bold">Email:</td>
-                <td class="fw-bold">Status:</td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <?php
-
-            while ($res = $sqlResult->fetch_assoc()) {
-                ?>
+        <div class="table-responsive">
+            <table class="table table-info table-striped mt-5 align-middle">
                 <tr>
-                    <td><?= $res['id']?></td>
-                    <td><?= $res['name']?></td>
-                    <td><?= $res['email']?></td>
-                    <td><?= $res['status'] ? 'Ativo' : 'Inativo'?></td>
-                    <td>
-                        <a data-bs-toggle="modal" data-bs-target="#staticBackdrop<?=$res['id']?>">
-                            <img width="35" title="Deletar" src="https://cdn2.iconfinder.com/data/icons/vivid/48/trash-256.png" alt="">
-                        </a>
-                        <div class="modal fade" id="staticBackdrop<?=$res['id']?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Deletar usuário</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        Você tem certeza que deseja deletar o usuário <strong><?= $res['name']?></strong>? <br>
-                                        <hr>
-                                        <strong>Nome:</strong> <?= $res['name']?> <br>
-                                        <strong>Email:</strong> <?= $res['email']?> <br>
-                                        <hr>
-                                        Ele será deletado para sempre!
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancelar</button>
-                                        <a href="./home.php?action=delete&id=<?=$res['id']?>" class="btn btn-danger">Deletar</a>
+                    <td class="fw-bold">Código:</td>
+                    <td class="fw-bold">Nome:</td>
+                    <td class="fw-bold">Email:</td>
+                    <td class="fw-bold">Status:</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <?php
+
+                while ($res = $sqlResult->fetch_assoc()) {
+                    ?>
+                    <tr>
+                        <td><?= $res['id']?></td>
+                        <td><?= $res['name']?></td>
+                        <td><?= $res['email']?></td>
+                        <td><?= $res['status'] ? 'Ativo' : 'Inativo'?></td>
+                        <td>
+                            <a data-bs-toggle="modal" data-bs-target="#staticBackdrop<?=$res['id']?>">
+                                <img width="35" title="Deletar" src="https://cdn2.iconfinder.com/data/icons/vivid/48/trash-256.png" alt="">
+                            </a>
+                            <div class="modal fade" id="staticBackdrop<?=$res['id']?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Deletar usuário</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Você tem certeza que deseja deletar o usuário <strong><?= $res['name']?></strong>? <br>
+                                            <hr>
+                                            <strong>Nome:</strong> <?= $res['name']?> <br>
+                                            <strong>Email:</strong> <?= $res['email']?> <br>
+                                            <hr>
+                                            Ele será deletado para sempre!
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancelar</button>
+                                            <a href="./home.php?action=delete&id=<?=$res['id']?>" class="btn btn-danger">Deletar</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </td>
-                    <td>
-                        <a href="./edit.php?id=<?=$res['id']?>">
-                            <img width="35" title="Editar" src="https://cdn1.iconfinder.com/data/icons/website-internet/48/website_-_pencil-256.png" alt="">
-                        </a>
-                    </td>
-                    <td>
+                        </td>
+                        <td>
+                            <a href="./edit.php?id=<?=$res['id']?>">
+                                <img width="35" title="Editar" src="https://cdn1.iconfinder.com/data/icons/website-internet/48/website_-_pencil-256.png" alt="">
+                            </a>
+                        </td>
+                        <td>
                             <?php
                             if ((bool) $res['status'] === true) { ?>
-                            <a href="./home.php?action=alterStatus&id=<?=$res['id']?>&status=<?=$res['status']?>">
-                                <img width="35" title="Desativar" src="https://cdn4.iconfinder.com/data/icons/essentials-72/24/039_-_Cross-256.png" alt="">
-                            </a>
+                                <a href="./home.php?action=alterStatus&id=<?=$res['id']?>&status=<?=$res['status']?>">
+                                    <img width="35" title="Desativar" src="https://cdn4.iconfinder.com/data/icons/essentials-72/24/039_-_Cross-256.png" alt="">
+                                </a>
                             <?php } else { ?>
-                            <a href="./home.php?action=alterStatus&id=<?=$res['id']?>&status=<?=$res['status']?>">
-                                <img width="35" title="Ativar" src="https://cdn4.iconfinder.com/data/icons/essentials-72/24/040_-_Tick-256.png" alt="">
-                            </a>
+                                <a href="./home.php?action=alterStatus&id=<?=$res['id']?>&status=<?=$res['status']?>">
+                                    <img width="35" title="Ativar" src="https://cdn4.iconfinder.com/data/icons/essentials-72/24/040_-_Tick-256.png" alt="">
+                                </a>
                             <?php } ?>
-                    </td>
-                </tr>
-            <?php }?>
-        </table>
+                        </td>
+                    </tr>
+                <?php }?>
+            </table>
+        </div>
     <?php } ?>
     <?php
     if (isset($_GET['action']))
